@@ -22,6 +22,8 @@ services:
       POSTGRES_DB: sentry
     networks:
       - sentry
+    ports:
+      - '54322:5432'
     volumes:
       - './data/sentry/postgres:/var/lib/postgresql/data'
 
@@ -31,7 +33,7 @@ services:
     hostname: sentry-base
     restart: always
     ports:
-      - '9000:9000'
+      - '9005:9000'
     env_file:
       - .env
     depends_on:
